@@ -18,11 +18,12 @@ build:
 requirements:
   host:
     - pip
-    - python =2.7|>=3.4
+    - python
 
   run:
-    - python =2.7|>=3.4
-    - lxml >=2.3.2
+    - python
+    - lxml >=3.1.0
+    - typing-extensions
 
 test:
   imports:
