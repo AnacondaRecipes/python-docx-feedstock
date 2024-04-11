@@ -53,6 +53,11 @@ about:
   license: MIT
   license_file: LICENSE
   summary: Create and update Microsoft Word .docx files.
+  description: |
+    python-docx is a Python library for reading, creating, 
+    and updating Microsoft Word 2007+ (.docx) files.
+  dev_url: https://github.com/python-openxml/python-docx
+  doc_url: https://python-docx.readthedocs.io/en/latest/
 
 extra:
   recipe-maintainers:
