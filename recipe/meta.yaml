@@ -26,6 +26,15 @@ requirements:
     - typing-extensions
 
 test:
+  source_files:
+    - tests
+  requires:
+    - pip
+    - pytest >=2.5
+    - pyparsing >=2.0.1
+  commands:
+    - pip check
+    - pytest tests -o python_classes=Describe -o python_functions=it_*
   imports:
     - docx
     - docx.dml
