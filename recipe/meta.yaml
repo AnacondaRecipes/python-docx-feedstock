@@ -1,39 +1,37 @@
 {% set name = "python-docx" %}
-{% set version = "1.1.0" %}
-{% set hash_val = "5829b722141cf1ab79aedf0c34d9fe9924b29764584c0f2164eb2b02dcdf17c9" %}
+{% set version = "1.2.0" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ hash_val }}
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
+  sha256: 7bc9d7b7d8a69c9c02ca09216118c86552704edc23bac179283f2e38f86220ce
 
 build:
   number: 0
+  skip: true  # [py<39]
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
   host:
     - pip
     - python
-    - setuptools
+    - setuptools >=61.0.0
     - wheel
-
   run:
     - python
     - lxml >=3.1.0
-    - typing-extensions
+    - typing-extensions >=4.9.0
 
 test:
   source_files:
     - tests
   requires:
     - pip
-    - pytest >=2.5
-    - pyparsing >=2.0.1
+    - pytest >=8.4.0
+    - pyparsing >=3.2.3
   commands:
     - pip check
     - pytest tests -o python_classes=Describe -o python_functions=it_*
@@ -60,7 +58,7 @@ about:
     python-docx is a Python library for reading, creating, 
     and updating Microsoft Word 2007+ (.docx) files.
   dev_url: https://github.com/python-openxml/python-docx
-  doc_url: https://python-docx.readthedocs.io/
+  doc_url: https://python-docx.readthedocs.io
 
 extra:
   recipe-maintainers:
